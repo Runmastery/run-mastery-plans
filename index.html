@@ -1,1 +1,730 @@
-Add 8-week plan
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Personalized Performance Plan – 8 weeks</title>
+
+  <style>
+    :root{
+      --rm-yellow:#f4c542;
+      --bg:#ffffff;
+      --text:#0b0b0b;
+      --muted:#5a5a5a;
+      --card:#f3f4f6;
+      --card2:#eceef1;
+      --stroke:#1a1a1a;
+      --stroke-soft:#d2d6dc;
+      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ margin:0; padding:0; background:var(--bg); color:var(--text); font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, Helvetica, sans-serif; }
+
+    .page{
+      width: 820px;
+      min-height: 1160px;
+      margin: 0 auto;
+      padding: 28px 30px 34px;
+    }
+
+    @media print{
+      body{ background:#fff; }
+      .page{ width:auto; min-height:auto; margin:0; padding:0.9cm; }
+      .no-print{ display:none !important; }
+    }
+
+    .topbar{
+      display:flex;
+      align-items:flex-end;
+      justify-content:space-between;
+      gap:16px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--stroke);
+    }
+    .top-title{
+      margin:0;
+      font-weight:800;
+      font-size:18px;
+      letter-spacing:.2px;
+    }
+    .top-meta{
+      font-size:12px;
+      color:var(--muted);
+      white-space:nowrap;
+    }
+
+    .header-card{
+      margin-top: 16px;
+      background: var(--card2);
+      border: 1px solid var(--stroke-soft);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap:18px;
+      align-items:center;
+    }
+    .avatar{
+      width:130px;
+      height:130px;
+      border-radius: 999px;
+      background: var(--rm-yellow);
+      display:grid;
+      place-items:center;
+      border: 2px solid rgba(0,0,0,.12);
+    }
+    .avatar svg{ width:78px; height:78px; }
+
+    .header-lines{ width:100%; }
+    .line-row{
+      display:grid;
+      grid-template-columns: auto 1fr;
+      align-items:end;
+      column-gap: 10px;
+      margin: 8px 0;
+    }
+    .line-label{
+      font-weight:900;
+      font-size:32px;
+      line-height:1;
+      letter-spacing:-.6px;
+      white-space:nowrap;
+    }
+    .line-value{
+      font-size:26px;
+      line-height:1.1;
+      padding-bottom: 6px;
+      border-bottom: 2px solid var(--stroke);
+    }
+
+    .section{ margin-top: 18px; }
+    .section-rule{ border-top: 2px solid var(--stroke); margin: 10px 0 14px; }
+    .tag{
+      display:inline-flex;
+      align-items:center;
+      background: var(--rm-yellow);
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-weight:900;
+      font-size:28px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.07);
+      position: relative;
+      top: -14px;
+    }
+    .subtag{
+      display:inline-flex;
+      align-items:center;
+      background: var(--rm-yellow);
+      padding: 7px 12px;
+      border-radius: 12px;
+      font-weight:900;
+      font-size:15px;
+      position: relative;
+      top: -12px;
+      box-shadow: 0 6px 18px rgba(0,0,0,.06);
+    }
+
+    .overview-grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      margin-top: 2px;
+    }
+    .box{
+      background: var(--card);
+      border: 1px solid var(--stroke-soft);
+      border-radius: var(--radius);
+      padding: 16px 14px 14px;
+      text-align:center;
+    }
+    .box-title{
+      font-weight:900;
+      font-size:14px;
+      letter-spacing:.3px;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .box-value{
+      font-weight:950;
+      font-size:28px;
+      letter-spacing:-.4px;
+    }
+
+    .body-text{
+      margin: 0;
+      font-size:14px;
+      line-height:1.55;
+      color:#171717;
+      max-width: 760px;
+    }
+
+    .week-block{ margin: 18px 0 22px; }
+    table.plan{ width:100%; border-collapse: separate; border-spacing: 0; table-layout: fixed; }
+
+    table.plan thead th{
+      background: #cfcfcf;
+      color:#111;
+      font-weight:900;
+      text-align:center;
+      font-size:14px;
+      padding: 12px 8px;
+      border-top: 1.5px solid var(--stroke);
+      border-bottom: 1.5px solid var(--stroke);
+      border-right: 1px solid rgba(0,0,0,.25);
+    }
+
+    table.plan thead th:first-child{
+      background: var(--rm-yellow);
+      text-align:left;
+      font-size:22px;
+      padding: 14px 12px;
+      border-left: 1.5px solid var(--stroke);
+      border-top-left-radius: 14px;
+    }
+    table.plan thead th:last-child{ border-top-right-radius: 14px; }
+
+    table.plan tbody td{
+      border-right: 1px solid rgba(0,0,0,.2);
+      border-bottom: 1px solid rgba(0,0,0,.25);
+      padding: 10px 10px;
+      vertical-align: top;
+      background:#fff;
+      height: 82px;
+    }
+    table.plan tbody tr td:first-child{
+      border-left: 1.5px solid var(--stroke);
+      background: #fff;
+      font-weight:700;
+      width: 16%;
+    }
+    table.plan tbody tr:last-child td:first-child{ border-bottom-left-radius: 14px; }
+    table.plan tbody tr:last-child td:last-child{ border-bottom-right-radius: 14px; }
+
+    .cell{
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      min-height: 66px;
+    }
+    .cell-top{
+      font-weight:900;
+      letter-spacing:-.2px;
+      font-size:14px;
+    }
+    .cell-sub{
+      font-size:12px;
+      color: var(--muted);
+      line-height:1.35;
+    }
+    .badge{
+      display:inline-flex;
+      align-items:center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--stroke-soft);
+      background: #fff;
+      font-size:11px;
+      color:#111;
+      width: fit-content;
+    }
+
+    .footer-hint{
+      margin-top: 14px;
+      font-size:12px;
+      color:var(--muted);
+    }
+
+    /* Minimal "tests" for this template (manual):
+       1) Open file in Chrome, ensure no console errors.
+       2) Print → Save as PDF, check that all weeks show and tables keep borders.
+       3) Resize window, ensure layout remains readable.
+    */
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <div class="topbar">
+      <h1 class="top-title">Personalized Performance Plan – 8 weeks</h1>
+      <div class="top-meta">Run Mastery · Premium Template</div>
+    </div>
+
+    <div class="header-card">
+      <div class="avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="#000" role="img" aria-label="User icon">
+          <path d="M12 12c2.76 0 5-2.46 5-5.5S14.76 1 12 1 7 3.46 7 6.5 9.24 12 12 12zm0 2c-4.42 0-8 2.24-8 5v3h16v-3c0-2.76-3.58-5-8-5z"/>
+        </svg>
+      </div>
+
+      <div class="header-lines">
+        <div class="line-row">
+          <div class="line-label">Name:</div>
+          <div class="line-value">Joacim</div>
+        </div>
+        <div class="line-row">
+          <div class="line-label">Goal:</div>
+          <div class="line-value">10K performance improvement</div>
+        </div>
+        <div class="line-row">
+          <div class="line-label">Start date:</div>
+          <div class="line-value">1 March 2026</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-rule"></div>
+      <span class="tag">Overview</span>
+
+      <div class="overview-grid">
+        <div class="box">
+          <div class="box-title">Distance</div>
+          <div class="box-value">10K</div>
+        </div>
+        <div class="box">
+          <div class="box-title">Target pace</div>
+          <div class="box-value">4:00 / km</div>
+        </div>
+        <div class="box">
+          <div class="box-title">Goal time</div>
+          <div class="box-value">40:00</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="section-rule"></div>
+      <span class="subtag">What to expect</span>
+
+      <p class="body-text">
+        This 8-week block is built around progressive overload, smart intensity distribution, and recovery that actually
+        drives adaptation. Easy days build durability. Threshold develops sustainable speed. VO2 sessions sharpen capacity.
+        Strength keeps you resilient. Nothing is random, every session has a job.
+      </p>
+    </div>
+
+    <div class="section">
+      <div class="section-rule"></div>
+      <span class="subtag">Your 8 week plan</span>
+
+      <!-- Week 1 -->
+      <div class="week-block">
+        <table class="plan" aria-label="Week 1 plan">
+          <thead>
+            <tr>
+              <th>Week 1</th>
+              <th>Day 1</th>
+              <th>Day 2</th>
+              <th>Day 3</th>
+              <th>Day 4</th>
+              <th>Day 5</th>
+              <th>Day 6</th>
+              <th>Day 7</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What:</td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Relaxed aerobic</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Strength</div><div class="cell-sub">Full-body basics</div><span class="badge">30–40 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Intervals</div><div class="cell-sub">Speed economy</div><span class="badge">6×400 m</span></div></td>
+              <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Walk + mobility</div><span class="badge">15 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Threshold</div><div class="cell-sub">Controlled hard</div><span class="badge">3×8 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Strength</div><div class="cell-sub">Hips + core focus</div><span class="badge">30 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Long run</div><div class="cell-sub">Easy with strides</div><span class="badge">70 min</span></div></td>
+            </tr>
+            <tr>
+              <td>Time:</td>
+              <td>45 min</td>
+              <td>30–40 min</td>
+              <td>45–55 min</td>
+              <td>Off</td>
+              <td>50–60 min</td>
+              <td>30 min</td>
+              <td>70 min</td>
+            </tr>
+            <tr>
+              <td>How:</td>
+              <td>Zone 2, conversational pace.</td>
+              <td>Squat pattern, hinge, push, pull, core. Keep reps clean.</td>
+              <td>6×400 m @ 5K pace, 200 m jog. Warm-up + cool-down.</td>
+              <td>Optional 15 min mobility + 20–30 min easy walk.</td>
+              <td>3×8 min @ threshold (10K effort +), 2 min easy between.</td>
+              <td>Single-leg work + calves, add core finisher.</td>
+              <td>Easy Zone 2. Finish with 6×10 s strides, full recovery.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Week 2 -->
+      <div class="week-block">
+        <table class="plan" aria-label="Week 2 plan">
+          <thead>
+            <tr>
+              <th>Week 2</th>
+              <th>Day 1</th>
+              <th>Day 2</th>
+              <th>Day 3</th>
+              <th>Day 4</th>
+              <th>Day 5</th>
+              <th>Day 6</th>
+              <th>Day 7</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What:</td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Aerobic build</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Strength</div><div class="cell-sub">Full-body basics</div><span class="badge">30–40 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">VO2 session</div><div class="cell-sub">High-quality reps</div><span class="badge">5×3 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Reset day</div><span class="badge">Mobility</span></div></td>
+              <td><div class="cell"><div class="cell-top">Progression</div><div class="cell-sub">Finish stronger</div><span class="badge">50 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Strength</div><div class="cell-sub">Posterior chain</div><span class="badge">30 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Long run</div><div class="cell-sub">Easy endurance</div><span class="badge">80 min</span></div></td>
+            </tr>
+            <tr>
+              <td>Time:</td>
+              <td>50 min</td>
+              <td>30–40 min</td>
+              <td>50–60 min</td>
+              <td>Off</td>
+              <td>50 min</td>
+              <td>30 min</td>
+              <td>80 min</td>
+            </tr>
+            <tr>
+              <td>How:</td>
+              <td>Zone 2, keep it smooth and controlled.</td>
+              <td>Same template. Add light plyos if you feel fresh (2–3 drills).</td>
+              <td>5×3 min hard (3K–5K effort), 2 min easy jog. Strong form.</td>
+              <td>Easy mobility: ankles, hips, thoracic. Optional walk.</td>
+              <td>35 min easy + 15 min steady (upper Zone 2 / low Zone 3).</td>
+              <td>Hinge + glutes + calves. Keep load moderate, no grinding reps.</td>
+              <td>Easy Zone 2 throughout. Fuel if needed. Finish feeling capable.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Week 3 -->
+      <div class="week-block">
+        <table class="plan" aria-label="Week 3 plan">
+          <thead>
+            <tr>
+              <th>Week 3</th>
+              <th>Day 1</th>
+              <th>Day 2</th>
+              <th>Day 3</th>
+              <th>Day 4</th>
+              <th>Day 5</th>
+              <th>Day 6</th>
+              <th>Day 7</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What:</td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Aerobic maintenance</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Strength</div><div class="cell-sub">Full-body + calves</div><span class="badge">35–45 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Intervals</div><div class="cell-sub">10K support speed</div><span class="badge">5×1K</span></div></td>
+              <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Mobility + easy walk</div><span class="badge">20 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Threshold</div><div class="cell-sub">Sustained control</div><span class="badge">2×12 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Short + relaxed</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Long run</div><div class="cell-sub">Easy endurance</div><span class="badge">85 min</span></div></td>
+            </tr>
+            <tr>
+              <td>Time:</td>
+              <td>45 min</td>
+              <td>35–45 min</td>
+              <td>55–65 min</td>
+              <td>Off</td>
+              <td>55–65 min</td>
+              <td>35 min</td>
+              <td>85 min</td>
+            </tr>
+            <tr>
+              <td>How:</td>
+              <td>Keep it easy, smooth cadence, no pushing.</td>
+              <td>Moderate load, focus on form. Finish with 2–3 sets calf raises.</td>
+              <td>5×1K @ around 10K pace, 2 min jog. Warm-up + cool-down.</td>
+              <td>Mobility flow, hips + ankles, keep it light.</td>
+              <td>2×12 min @ threshold, 3 min easy between, controlled breathing.</td>
+              <td>Easy run, include 4×10 s strides if fresh.</td>
+              <td>Zone 2 throughout, finish feeling you could go longer.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Week 4 -->
+      <div class="week-block">
+        <table class="plan" aria-label="Week 4 plan">
+          <thead>
+            <tr>
+              <th>Week 4</th>
+              <th>Day 1</th>
+              <th>Day 2</th>
+              <th>Day 3</th>
+              <th>Day 4</th>
+              <th>Day 5</th>
+              <th>Day 6</th>
+              <th>Day 7</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What:</td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Recovery aerobic</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Strength</div><div class="cell-sub">Lighter deload</div><span class="badge">25–35 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">VO2 session</div><div class="cell-sub">Quality, not chaos</div><span class="badge">6×2 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Reset</div><span class="badge">Sleep</span></div></td>
+              <td><div class="cell"><div class="cell-top">Tempo</div><div class="cell-sub">Steady confidence</div><span class="badge">25 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Short + relaxed</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Long run</div><div class="cell-sub">Cutback week</div><span class="badge">70 min</span></div></td>
+            </tr>
+            <tr>
+              <td>Time:</td>
+              <td>40 min</td>
+              <td>25–35 min</td>
+              <td>45–55 min</td>
+              <td>Off</td>
+              <td>50–60 min</td>
+              <td>30–35 min</td>
+              <td>70 min</td>
+            </tr>
+            <tr>
+              <td>How:</td>
+              <td>Keep effort low, this week absorbs training.</td>
+              <td>Reduce load, keep movement quality high.</td>
+              <td>6×2 min hard (3K–5K effort), 2 min easy. Stop while strong.</td>
+              <td>No training guilt. Optional easy mobility.</td>
+              <td>25 min steady (comfortably hard), not a race.</td>
+              <td>Easy run, skip strides if legs feel heavy.</td>
+              <td>Shorter long run, purely aerobic.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Week 5 -->
+      <div class="week-block">
+        <table class="plan" aria-label="Week 5 plan">
+          <thead>
+            <tr>
+              <th>Week 5</th>
+              <th>Day 1</th>
+              <th>Day 2</th>
+              <th>Day 3</th>
+              <th>Day 4</th>
+              <th>Day 5</th>
+              <th>Day 6</th>
+              <th>Day 7</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What:</td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Back to build</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Strength</div><div class="cell-sub">Full-body basics</div><span class="badge">35–45 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Intervals</div><div class="cell-sub">Race-specific</div><span class="badge">3×2K</span></div></td>
+              <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Mobility + walk</div><span class="badge">20 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Threshold</div><div class="cell-sub">Cruise intervals</div><span class="badge">4×6 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Relaxed shakeout</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Long run</div><div class="cell-sub">Endurance + strides</div><span class="badge">90 min</span></div></td>
+            </tr>
+            <tr>
+              <td>Time:</td>
+              <td>45–50 min</td>
+              <td>35–45 min</td>
+              <td>60–70 min</td>
+              <td>Off</td>
+              <td>55–65 min</td>
+              <td>35–40 min</td>
+              <td>90 min</td>
+            </tr>
+            <tr>
+              <td>How:</td>
+              <td>Easy, keep it truly easy so quality days pop.</td>
+              <td>Moderate load, include single-leg + core.</td>
+              <td>3×2K @ 10K pace, 3 min jog. Smooth, consistent splits.</td>
+              <td>Reset day, hydrate, light mobility.</td>
+              <td>4×6 min @ threshold, 2 min easy. Controlled, not desperate.</td>
+              <td>Easy run, add 4×10 s strides if fresh.</td>
+              <td>Easy Zone 2, finish with 6×10 s strides (optional).</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Week 6 -->
+      <div class="week-block">
+        <table class="plan" aria-label="Week 6 plan">
+          <thead>
+            <tr>
+              <th>Week 6</th>
+              <th>Day 1</th>
+              <th>Day 2</th>
+              <th>Day 3</th>
+              <th>Day 4</th>
+              <th>Day 5</th>
+              <th>Day 6</th>
+              <th>Day 7</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What:</td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Aerobic support</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Strength</div><div class="cell-sub">Maintain, not max</div><span class="badge">30–40 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">VO2 session</div><div class="cell-sub">Fast but controlled</div><span class="badge">4×4 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Reset</div><span class="badge">Mobility</span></div></td>
+              <td><div class="cell"><div class="cell-top">Race pace</div><div class="cell-sub">Specific feel</div><span class="badge">20 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Short shakeout</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Long run</div><div class="cell-sub">Endurance</div><span class="badge">80–90 min</span></div></td>
+            </tr>
+            <tr>
+              <td>Time:</td>
+              <td>45 min</td>
+              <td>30–40 min</td>
+              <td>55–65 min</td>
+              <td>Off</td>
+              <td>50–60 min</td>
+              <td>30–35 min</td>
+              <td>80–90 min</td>
+            </tr>
+            <tr>
+              <td>How:</td>
+              <td>Easy aerobic, focus on relaxed mechanics.</td>
+              <td>Maintain strength with moderate loads and perfect form.</td>
+              <td>4×4 min hard, 3 min easy. Strong posture, quick cadence.</td>
+              <td>Mobility + light walking optional.</td>
+              <td>20 min @ 10K pace inside an easy run, learn the rhythm.</td>
+              <td>Easy, keep it short and light.</td>
+              <td>Stay easy, optional 4×10 s strides at the end.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Week 7 -->
+      <div class="week-block">
+        <table class="plan" aria-label="Week 7 plan">
+          <thead>
+            <tr>
+              <th>Week 7</th>
+              <th>Day 1</th>
+              <th>Day 2</th>
+              <th>Day 3</th>
+              <th>Day 4</th>
+              <th>Day 5</th>
+              <th>Day 6</th>
+              <th>Day 7</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What:</td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Fresh legs</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Strength</div><div class="cell-sub">Short maintenance</div><span class="badge">20–30 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Sharpener</div><div class="cell-sub">Fast, short reps</div><span class="badge">10×200 m</span></div></td>
+              <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Recover</div><span class="badge">Sleep</span></div></td>
+              <td><div class="cell"><div class="cell-top">Threshold</div><div class="cell-sub">Reduced volume</div><span class="badge">2×10 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Shakeout</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Long run</div><div class="cell-sub">Shorter</div><span class="badge">70–75 min</span></div></td>
+            </tr>
+            <tr>
+              <td>Time:</td>
+              <td>40–45 min</td>
+              <td>20–30 min</td>
+              <td>45–55 min</td>
+              <td>Off</td>
+              <td>45–55 min</td>
+              <td>25–30 min</td>
+              <td>70–75 min</td>
+            </tr>
+            <tr>
+              <td>How:</td>
+              <td>Easy. The goal is freshness, not fitness today.</td>
+              <td>One set less than normal, stop all sets feeling strong.</td>
+              <td>10×200 m fast (but smooth), 200 m easy. Stay relaxed.</td>
+              <td>Feet up. Optional mobility if it helps you.</td>
+              <td>2×10 min @ threshold, 3 min easy. Finish confident.</td>
+              <td>Short easy run, include 4×10 s strides if you want.</td>
+              <td>Easy long run, no hero pace.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Week 8 -->
+      <div class="week-block">
+        <table class="plan" aria-label="Week 8 plan">
+          <thead>
+            <tr>
+              <th>Week 8</th>
+              <th>Day 1</th>
+              <th>Day 2</th>
+              <th>Day 3</th>
+              <th>Day 4</th>
+              <th>Day 5</th>
+              <th>Day 6</th>
+              <th>Day 7</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>What:</td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Taper</div><span class="badge">Z2</span></div></td>
+              <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Off + mobility</div><span class="badge">15 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Race primer</div><div class="cell-sub">Openers</div><span class="badge">3×3 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Relax</div><span class="badge">Sleep</span></div></td>
+              <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">With strides</div><span class="badge">30 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Pre-race</div><span class="badge">Walk</div></div></td>
+              <td><div class="cell"><div class="cell-top">Race / Time Trial</div><div class="cell-sub">10K effort</div><span class="badge">Goal day</span></div></td>
+            </tr>
+            <tr>
+              <td>Time:</td>
+              <td>35–40 min</td>
+              <td>Off</td>
+              <td>40–50 min</td>
+              <td>Off</td>
+              <td>30 min</td>
+              <td>Off</td>
+              <td>Race</td>
+            </tr>
+            <tr>
+              <td>How:</td>
+              <td>Easy, keep it light, finish feeling fresh.</td>
+              <td>Mobility only if it helps you feel loose.</td>
+              <td>3×3 min @ 10K pace, 3 min easy. Then 4×20 s relaxed strides.</td>
+              <td>Rest, hydrate, and keep stress low.</td>
+              <td>Easy run + 4×10 s strides, full recovery.</td>
+              <td>Short walk, visualize pacing and the first 2K.</td>
+              <td>Warm-up well, start controlled, commit in the second half.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="footer-hint no-print">
+        Export tip: Chrome → Print → Save as PDF. Paper size A4, margins “None” or “Minimum”.
+      </div>
+    </div>
+  </div>
+
+  <!-- NOTE:
+       The earlier error you saw (Identifier 'scriptElement' has already been declared)
+       is caused by JavaScript that declares a variable named scriptElement more than once.
+       This template intentionally includes NO JavaScript, so it won’t create that conflict.
+       If you still see that exact error, it’s coming from other scripts in your page/app.
+  -->
+</body>
+</html>
+
+
+
