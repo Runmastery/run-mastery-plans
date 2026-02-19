@@ -36,34 +36,176 @@
     }
 
     @media (max-width: 720px){
+      /* Make it feel like a finished product on mobile */
+      .page{
+        padding: 20px 16px 28px;
+        min-height: auto;
+      }
+
       .topbar{
         flex-direction: column;
         align-items: flex-start;
         gap: 8px;
       }
-      .top-meta{ white-space: normal; }
+      .top-title{
+        font-size: clamp(18px, 5.2vw, 22px);
+        line-height: 1.15;
+      }
+      .top-meta{ white-space: normal; font-size: 12px; }
 
       .header-card{
         grid-template-columns: 1fr;
         gap: 14px;
+        padding: 16px;
       }
-      .avatar{ width: 96px; height: 96px; }
-      .avatar svg{ width: 56px; height: 56px; }
+      .avatar{ width: 92px; height: 92px; }
+      .avatar svg{ width: 54px; height: 54px; }
 
-      .line-row{ grid-template-columns: 1fr; row-gap: 6px; margin: 10px 0; }
-      .line-label{ font-size: 18px; letter-spacing: -0.2px; }
-      .line-value{ font-size: 18px; padding-bottom: 8px; }
+      .line-row{
+        grid-template-columns: 1fr;
+        row-gap: 6px;
+        margin: 12px 0;
+      }
+      .line-label{
+        font-size: 14px;
+        letter-spacing: 0;
+      }
+      .line-value{
+        font-size: 18px;
+        padding-bottom: 8px;
+      }
+
+      .section{ margin-top: 20px; }
+      .section-rule{ margin: 12px 0 16px; }
 
       .tag{ font-size: 20px; padding: 7px 12px; top: -10px; }
       .subtag{ font-size: 13px; padding: 6px 10px; top: -10px; }
 
       .overview-grid{ grid-template-columns: 1fr; gap: 12px; }
-      .box-value{ font-size: 22px; }
+      .box{ padding: 16px 14px; }
+      .box-title{ font-size: 12px; }
+      .box-value{ font-size: 24px; }
 
-      .body-text{ font-size: 13px; }
+      .body-text{ font-size: 14px; line-height: 1.6; }
 
-      /* Prevent any accidental sideways scroll */
-      body{ overflow-x: hidden; }
+      /* Remove the wide week tables on mobile and replace with vertical cards */
+      table.plan{ display:none; }
+
+      .week-mobile{ display:block; margin: 14px 0 22px; }
+      .week-mobile-header{
+        display:flex;
+        align-items:baseline;
+        justify-content:space-between;
+        gap:10px;
+        padding: 12px 14px;
+        border: 1px solid var(--stroke-soft);
+        border-radius: 14px;
+        background: var(--rm-yellow);
+        box-shadow: var(--shadow);
+      }
+      .week-mobile-title{ font-weight: 950; font-size: 18px; }
+      .week-mobile-sub{ font-weight: 800; font-size: 12px; color: rgba(0,0,0,.72); }
+
+      .day-cards{
+        margin-top: 10px;
+        display:flex;
+        flex-direction:column;
+        gap: 10px;
+      }
+      .day-card{
+        border: 1px solid var(--stroke-soft);
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: var(--shadow);
+        padding: 12px 12px 10px;
+      }
+      .day-card-top{
+        display:flex;
+        align-items:baseline;
+        justify-content:space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .day-name{ font-weight: 950; font-size: 14px; letter-spacing: .2px; }
+      .day-badge{ font-weight: 900; font-size: 11px; color: var(--muted); }
+
+      .day-row{ margin-top: 8px; }
+      .day-row-label{
+        font-weight: 900;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        color: var(--muted);
+      }
+      .day-row-value{ margin-top: 4px; font-size: 13px; line-height: 1.35; }
+      .day-row-muted{ margin-top: 4px; font-size: 12px; color: var(--muted); line-height: 1.4; }
+    }
+
+    @media print20px; }
+      .section-rule{ margin: 12px 0 16px; }
+
+      .tag{ font-size: 20px; padding: 7px 12px; top: -10px; }
+      .subtag{ font-size: 13px; padding: 6px 10px; top: -10px; }
+
+      .overview-grid{ grid-template-columns: 1fr; gap: 12px; }
+      .box{ padding: 16px 14px; }
+      .box-title{ font-size: 12px; }
+      .box-value{ font-size: 24px; }
+
+      .body-text{ font-size: 14px; line-height: 1.6; }
+
+      /* Remove the wide week tables on mobile and replace with vertical cards */
+      table.plan{ display:none; }
+
+      /* Mobile week cards */
+      .week-mobile{ display:block; margin: 14px 0 22px; }
+      .week-mobile-header{
+        display:flex;
+        align-items:baseline;
+        justify-content:space-between;
+        gap:10px;
+        padding: 12px 14px;
+        border: 1px solid var(--stroke-soft);
+        border-radius: 14px;
+        background: var(--rm-yellow);
+        box-shadow: var(--shadow);
+      }
+      .week-mobile-title{ font-weight: 950; font-size: 18px; }
+      .week-mobile-sub{ font-weight: 800; font-size: 12px; color: rgba(0,0,0,.72); }
+
+      .day-cards{
+        margin-top: 10px;
+        display:flex;
+        flex-direction:column;
+        gap: 10px;
+      }
+      .day-card{
+        border: 1px solid var(--stroke-soft);
+        border-radius: 16px;
+        background: #fff;
+        box-shadow: var(--shadow);
+        padding: 12px 12px 10px;
+      }
+      .day-card-top{
+        display:flex;
+        align-items:baseline;
+        justify-content:space-between;
+        gap: 10px;
+        margin-bottom: 8px;
+      }
+      .day-name{ font-weight: 950; font-size: 14px; letter-spacing: .2px; }
+      .day-badge{ font-weight: 900; font-size: 11px; color: var(--muted); }
+
+      .day-row{ margin-top: 8px; }
+      .day-row-label{
+        font-weight: 900;
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: .5px;
+        color: var(--muted);
+      }
+      .day-row-value{ margin-top: 4px; font-size: 13px; line-height: 1.35; }
+      .day-row-muted{ margin-top: 4px; font-size: 12px; color: var(--muted); line-height: 1.4; }
     }
 
     @media print{
@@ -105,8 +247,10 @@
       align-items:center;
     }
     .avatar{
-      width:130px;
-      height:130px;
+  .week-block{ margin: 18px 0 22px; }
+
+    /* Mobile cards are injected by JS. Keep hidden by default on desktop. */
+    .week-mobile{ display:none; };
       border-radius: 999px;
       background: var(--rm-yellow);
       display:grid;
@@ -718,7 +862,122 @@
               <td>What:</td>
               <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">Taper</div><span class="badge">Z2</span></div></td>
               <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Off + mobility</div><span class="badge">15 min</span></div></td>
-              <td><div class="cell"><div class="cell-top">Race primer</div><div class="cell-sub">Openers</div><span class="badge">3×3 min</span></div></td>
+              <td><div class="cell"><div class="cell-top">Race primer</div><div clas
+
+  <script>
+    // Mobile-first view for weeks (no horizontal scroll).
+    // Desktop keeps the original table layout.
+    (function () {
+      function collapseWS(str) {
+        if (!str) return '';
+        var out = '';
+        var prevSpace = false;
+        for (var i = 0; i < str.length; i++) {
+          var c = str.charAt(i);
+          var isSpace = (c === ' ' || c === '\n' || c === '\t' || c === '\r' || c === '\f');
+          if (isSpace) {
+            if (!prevSpace) out += ' ';
+            prevSpace = true;
+          } else {
+            out += c;
+            prevSpace = false;
+          }
+        }
+        return out.trim();
+      }
+
+      function cleanText(node) {
+        return collapseWS(node && node.textContent ? node.textContent : '');
+      }
+
+      function buildMobileForTable(table) {
+        var weekBlock = table.closest('.week-block');
+        if (!weekBlock) return;
+
+        var ths = Array.prototype.slice.call(table.querySelectorAll('thead th'));
+        if (ths.length < 2) return;
+
+        var weekTitle = cleanText(ths[0]) || 'Week';
+        var dayHeaders = ths.slice(1).map(function (th, i) {
+          var t = cleanText(th);
+          return t || ('Day ' + (i + 1));
+        });
+
+        var rows = Array.prototype.slice.call(table.querySelectorAll('tbody tr'));
+        function labelOfRow(row) { return cleanText(row.querySelector('td')); }
+        function cellsOfRow(row) { return Array.prototype.slice.call(row.querySelectorAll('td')).slice(1); }
+
+        var whatRow = rows.find(function (r) { return /what/i.test(labelOfRow(r)); });
+        var timeRow = rows.find(function (r) { return /time/i.test(labelOfRow(r)); });
+        var howRow  = rows.find(function (r) { return /how/i.test(labelOfRow(r)); });
+        if (!whatRow || !timeRow || !howRow) return;
+
+        var whatCells = cellsOfRow(whatRow);
+        var timeCells = cellsOfRow(timeRow);
+        var howCells  = cellsOfRow(howRow);
+
+        var wrap = document.createElement('section');
+        wrap.className = 'week-mobile';
+        wrap.setAttribute('aria-label', weekTitle + ' mobile plan');
+
+        var header = document.createElement('div');
+        header.className = 'week-mobile-header';
+        header.innerHTML =
+          '<div class="week-mobile-title">' + weekTitle + '</div>' +
+          '<div class="week-mobile-sub">Scroll down</div>';
+
+        var cards = document.createElement('div');
+        cards.className = 'day-cards';
+
+        wrap.appendChild(header);
+        wrap.appendChild(cards);
+
+        for (var i = 0; i < 7; i++) {
+          var dayName = dayHeaders[i] || ('Day ' + (i + 1));
+
+          var whatCell = whatCells[i];
+          var sessionTop = cleanText(whatCell ? whatCell.querySelector('.cell-top') : null) || cleanText(whatCell);
+          var sessionSub = cleanText(whatCell ? whatCell.querySelector('.cell-sub') : null);
+          var badge = cleanText(whatCell ? whatCell.querySelector('.badge') : null);
+
+          var time = cleanText(timeCells[i]);
+          var how  = cleanText(howCells[i]);
+
+          var card = document.createElement('article');
+          card.className = 'day-card';
+
+          var badgeText = badge || time || '';
+
+          card.innerHTML =
+            '<div class="day-card-top">' +
+              '<div class="day-name">' + dayName + '</div>' +
+              '<div class="day-badge">' + badgeText + '</div>' +
+            '</div>' +
+            '<div class="day-row">' +
+              '<div class="day-row-label">Session</div>' +
+              '<div class="day-row-value">' + (sessionTop || '') + '</div>' +
+              (sessionSub ? '<div class="day-row-muted">' + sessionSub + '</div>' : '') +
+            '</div>' +
+            '<div class="day-row">' +
+              '<div class="day-row-label">Duration</div>' +
+              '<div class="day-row-value">' + (time || '—') + '</div>' +
+            '</div>' +
+            '<div class="day-row">' +
+              '<div class="day-row-label">How</div>' +
+              '<div class="day-row-value">' + (how || '—') + '</div>' +
+            '</div>';
+
+          cards.appendChild(card);
+        }
+
+        weekBlock.appendChild(wrap);
+      }
+
+      var tables = document.querySelectorAll('table.plan');
+      for (var i = 0; i < tables.length; i++) buildMobileForTable(tables[i]);
+    })();
+  </script>
+</body>sub">Openers</div><span class="badge">3×3 min</span></div></td>
               <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Relax</div><span class="badge">Sleep</span></div></td>
               <td><div class="cell"><div class="cell-top">Easy run</div><div class="cell-sub">With strides</div><span class="badge">30 min</span></div></td>
               <td><div class="cell"><div class="cell-top">Rest</div><div class="cell-sub">Pre-race</div><span class="badge">Walk</div></div></td>
